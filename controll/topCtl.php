@@ -10,15 +10,8 @@ class topCtl extends fireSignCtl
     {
         $topMdl = new topMdl();
 
-		$data = "<ul>";
-		for($i = 0; $i <= 10; $i++){
-			$data .= "<li>data list is {$i} </li>";	
-		}
-		$data .= "</ul>";
-
 		// view に表示する値を渡す
-		$this->viewData= array('hello' => 'Hello, FireSign Page!!',
-								'data_list' => $data);
+		$this->viewData= array('hello' => 'Hello, FireSign Page!!');
 
 		// top view表示
 		$this->showView('topView');

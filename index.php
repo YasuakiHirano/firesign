@@ -4,9 +4,8 @@
     require_once './config.php';
     require_once './dispatcher.php';
 
-    $default_page = "top";
-    $default_action = "main";
-    
+    $default_page = NO_LOGIN_ROOT;
+    $default_action = LOGIN_ROOT;
     $dispatcher = new Dispatcher();
     $dispatcher->setSystemRoot(SYSTEM_ROOT);
 

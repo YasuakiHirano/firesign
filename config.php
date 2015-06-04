@@ -8,6 +8,9 @@ define("ACTION_DELIMTER","Act");
 define("VIEW_DIR","./view/");
 define("CSS_DIR","./css/");
 define("JS_DIR","./js/");
+define(NO_LOGIN_ROOT, "top");
+define(LOGIN_ROOT, "main");
+
 
 //共通クラス・共通部品等読み込み定義
 require_once './core/fireSignCtl.php';
