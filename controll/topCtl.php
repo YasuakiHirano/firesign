@@ -10,11 +10,12 @@ class topCtl extends fireSignCtl
     {
         $topMdl = new topMdl();
 
-		// view に表示する値を渡す
-		$this->viewData= array('hello' => 'Hello, FireSign Page!!');
+        // view に表示する値を渡す
+        $this->viewData= array('hello' => 'Hello, FireSign Page!!', 
+                            'title' => 'FireSign');
 
-		// top view表示
-		$this->showView('topView');
+        // top view表示
+        $this->showView('topView');
     }
 
 }

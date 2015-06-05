@@ -7,6 +7,7 @@
         <script type="text/javascript" src="<?php echo JS_DIR; ?>common.js"></script>
 
         <link media="all" rel="stylesheet" href="<?php echo CSS_DIR; ?>styles/solarized_dark.css" type="text/css" />
+        <link media="all" rel="stylesheet" href="./common/bootstrap/css/bootstrap.min.css" type="text/css" />
         <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
         <title><?php echo $title?></title>
         <script>
@@ -20,6 +21,14 @@
         <script type="text/javascript" src="<?php echo JS_DIR; ?>languages/php.js"></script>
     </head>
     <body>
+    <div class="navbar">
+        <div class="navbar-inner">
+            <a class="brand" href="#"><?php echo $title;?></a>
+            <ul class="nav">
+                <li class="active"><a href="#">Home</a></li>
+            </ul>
+        </div>
+    </div>
     <div id="page_main">
         <div style="width:100%;float:left;margin-top:10px;">
             <?php echo $hello?>
@@ -27,20 +36,24 @@
                 FireSignはphpフレームワークです。<br />
                 軽量で使いやすい、簡単に目的のサイトが構築できるフレームワークを目指します！<br />
                 <ul>
-                    <li><a href="#makesite">・firesignで新規にサイトを作る</a></li>
-                    <li>・コントローラについて</li>
-                    <li>・モデルについて</li>
-                    <li>・ライブラリについて</li>
+                    <li><a href="#makesite">firesignで新規にサイトを作る</a></li>
+                    <li>コントローラについて</li>
+                    <li>モデルについて</li>
+                    <li>ライブラリについて</li>
                 </ul>
                 <div id="makesite">firesignで新規にサイトを作る</div>
                 本体をまず、ドキュメントルートなどに設置します。
-                config.phpを編集して、最初に表示するページの名前を決定します。
-                下記のように編集します。
+                config.phpを下記のように編集します。
 
                 <div class="file_name">config.php</a>
 
-<pre><code class="php hljs">&lt;?php define(NO_LOGIN_ROOT, "top"); // 「top」をルートにする設定
+<pre><code class="php hljs">&lt;?php
+define("SYSTEM_ROOT","/var/html/www/tools.codelike.info/firesign"); // 本体設置ディレクトリ
+define("SITE_URL","http://tools.codelike.info/firesign/"); // トップのURL
+define(NO_LOGIN_ROOT, "top"); // 「top」ページをルートにする設定(コントローラ・モデル名に紐付きます）
 </code></pre>
+
+
                 合わせて下記のように、コントロール・モデルクラスファイルを作ります。
                 <div class="file_name">topCtl.php</a>
 <pre><code class="php hljs">&lt;?php
