@@ -12,9 +12,9 @@
         <title><?php echo $title?></title>
         <script>
             $(document).ready(function() {
-            $('pre').each(function(i, block) {
-            hljs.highlightBlock(block);
-            });
+                $('pre').each(function(i, block) {
+                    hljs.highlightBlock(block);
+                });
             });
         </script>
 
@@ -35,21 +35,24 @@
         軽量で使いやすい、簡単に目的のサイトが構築できるフレームワークを目指します！<br />
         <ul>
             <li><a href="#makesite">firesignで新規にサイトを作る</a></li>
-            <li>コントローラについて</li>
+            <li><a href="#mvc">mvcについて</a></li>
+            <li><a href="#controller">コントローラについて</a></li>
             <li>モデルについて</li>
             <li>ライブラリについて</li>
         </ul>
+
+        <div class="one_discript">
         <div id="makesite"><i class="icon-hand-right"></i>firesignで新規にサイトを作る</div>
         本体をまず、ドキュメントルートなどに設置します。
         config.phpを下記のように編集します。
 
         <div class="file_name">config.php</div>
 
-<pre><code class="php hljs">&lt;?php
-define("SYSTEM_ROOT","/var/html/www/tools.codelike.info/firesign"); // 本体設置ディレクトリ
-define("SITE_URL","http://tools.codelike.info/firesign/"); // トップのURL
-define(NO_LOGIN_ROOT, "top"); // 「top」ページをルートにする設定(コントローラ・モデル名に紐付きます）
-</code></pre>
+        <pre><code class="php">&lt;?php
+        define("SYSTEM_ROOT","/var/html/www/tools.codelike.info/firesign"); // 本体設置ディレクトリ
+        define("SITE_URL","http://tools.codelike.info/firesign/"); // トップのURL
+        define(NO_LOGIN_ROOT, "top"); // 「top」ページをルートにする設定(コントローラ・モデル名に紐付きます）
+        </code></pre>
 
         合わせて下記のように、コントロール・モデルクラスファイルを作ります。
         <div class="file_name">topCtl.php</div>
@@ -117,6 +120,52 @@ class topMdl extends fireSignMdl
 &lt;/html&gt;
 </code></pre>
 
+        </div>
+
+        <div class="one_discript">
+        <div id="mvc"><i class="icon-hand-right"></i>MVCモデル</div>
+        MVCはモデル・ビュー・コントローラにわけて、ものを作ろうという考え方です。<br />
+        詳しくはgoogle先生まで。<br />
+
+        firesignではcontrollerディレクトリにコントローラを、modelディレクトリにモデルを<br />
+        viewディレクトリにビューを配置して、それぞれデータのやり取りをしてページを構成します。<br />
+
+        link:<a href="http://ja.wikipedia.org/wiki/Model_View_Controller" target="_blank">MVC wiki</a><br /><br />
+        </div>
+
+        <div class="one_discript">
+        <div id="controller"><i class="icon-hand-right"></i>コントローラについて</div>
+<pre><code class="php hljs">&lt;?php
+class topCtl extends fireSignCtl
+{
+    public $topMdl;
+    function mainAct()  
+    {
+        $topMdl = new topMdl();
+
+        // view に表示する値を渡す
+        $this-&gt;viewData = array('hello' =&gt; 'Hello, FireSign Page!!');
+
+        // top view表示
+        $this-&gt;showView('topView');
+    }
+
+}
+</code></pre>
+コントローラのソースが上記になります。controllerディレクトリに配置します。<br />
+クラス名のCtlは固定です。configを変更することで、かえることができます。<br />
+extendsしてるのがコントローラの親クラスになります。基本的な機能を入れてます。<br />
+coreディレクトリのなかにおいてます。<br />
+コントローラでは色々なデータを加工したりして、viewに渡します。<br />
+$this-&gt;viewDataに配列で追加することによって、viewで使用できます。ここではhelloのキーで渡しているためviewでは$helloで使うことになります。<br />
+$this-&gt;showViewでビューを表示します。その時にviewDataに格納したデータをビューに渡します。
+        </div>
+
+
+
+        <div id="model"><i class="icon-hand-right"></i>モデルについて</div>
+        <div id="library"><i class="icon-hand-right"></i>ライブラリについて</div>
     </div>
+
     </body>
 </html>
