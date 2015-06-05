@@ -30,22 +30,20 @@
         </div>
     </div>
     <div id="page_main">
-        <div style="width:100%;float:left;margin-top:10px;">
-            <?php echo $hello?>
-            <div>
-                FireSignはphpフレームワークです。<br />
-                軽量で使いやすい、簡単に目的のサイトが構築できるフレームワークを目指します！<br />
-                <ul>
-                    <li><a href="#makesite">firesignで新規にサイトを作る</a></li>
-                    <li>コントローラについて</li>
-                    <li>モデルについて</li>
-                    <li>ライブラリについて</li>
-                </ul>
-                <div id="makesite">firesignで新規にサイトを作る</div>
-                本体をまず、ドキュメントルートなどに設置します。
-                config.phpを下記のように編集します。
+        <?php echo $hello?>
+        FireSignはphpフレームワークです。<br />
+        軽量で使いやすい、簡単に目的のサイトが構築できるフレームワークを目指します！<br />
+        <ul>
+            <li><a href="#makesite">firesignで新規にサイトを作る</a></li>
+            <li>コントローラについて</li>
+            <li>モデルについて</li>
+            <li>ライブラリについて</li>
+        </ul>
+        <div id="makesite"><i class="icon-hand-right"></i>firesignで新規にサイトを作る</div>
+        本体をまず、ドキュメントルートなどに設置します。
+        config.phpを下記のように編集します。
 
-                <div class="file_name">config.php</a>
+        <div class="file_name">config.php</div>
 
 <pre><code class="php hljs">&lt;?php
 define("SYSTEM_ROOT","/var/html/www/tools.codelike.info/firesign"); // 本体設置ディレクトリ
@@ -53,9 +51,8 @@ define("SITE_URL","http://tools.codelike.info/firesign/"); // トップのURL
 define(NO_LOGIN_ROOT, "top"); // 「top」ページをルートにする設定(コントローラ・モデル名に紐付きます）
 </code></pre>
 
-
-                合わせて下記のように、コントロール・モデルクラスファイルを作ります。
-                <div class="file_name">topCtl.php</a>
+        合わせて下記のように、コントロール・モデルクラスファイルを作ります。
+        <div class="file_name">topCtl.php</div>
 <pre><code class="php hljs">&lt;?php
 class topCtl extends fireSignCtl
 {
@@ -73,8 +70,8 @@ class topCtl extends fireSignCtl
 
 }
 </code></pre>
-                モデルファイルは下記のようにして作ります、モデル（DB等）にアクセスしない場合は
-                <div class="file_name">topModel.php</a>
+        モデルファイルは下記のようにして作ります、モデル（DB等）にアクセスしない場合は
+        <div class="file_name">topModel.php</div>
 <pre><code class="php hljs">&lt;?php
 class topMdl extends fireSignMdl
 {
@@ -100,16 +97,16 @@ class topMdl extends fireSignMdl
     }
 }
 </code></pre>
-                下記のようにfunctionを実装せずにファイルのみ用意します。
-                <div class="file_name">topModel.php</a>
+        下記のようにfunctionを実装せずにファイルのみ用意します。
+        <div class="file_name">topModel.php</div>
 <pre><code class="php hljs">&lt;?php
 class topMdl extends fireSignMdl
 {
 }
 </code></pre>
-                最後にビューを作ります。phpファイルなので、好きなようにタグが使えます。<br />
-                基本的にはコントローラで渡した値を表示するだけにしましょう。
-                <div class="file_name">topView.php</a>
+        最後にビューを作ります。phpファイルなので、好きなようにタグが使えます。<br />
+        基本的にはコントローラで渡した値を表示するだけにしましょう。
+        <div class="file_name">topView.php</div>
 <pre><code class="html hljs">
 &lt;!DOCTYPE html&gt;
 &lt;html lang="ja"&gt;
@@ -120,8 +117,6 @@ class topMdl extends fireSignMdl
 &lt;/html&gt;
 </code></pre>
 
-            </div>
-        </div>
     </div>
     </body>
 </html>
