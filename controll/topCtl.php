@@ -10,6 +10,10 @@ class topCtl extends fireSignCtl
     {
         $topMdl = new topMdl();
 
+        // DB値取得
+        $ret = $topMdl->getUsers();
+        $arr = pg_fetch_all($ret);
+
         // view に表示する値を渡す
         $this->viewData= array('hello' => 'Hello, FireSign Page!!', 
                             'title' => 'FireSign');
