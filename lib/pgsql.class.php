@@ -182,24 +182,24 @@ class PostgreSQL
         if($this->_connection)
         {
             $sql = "INSERT INTO $table ";
-            $columnString = "(";
-            $valuesString = "VALUES(";
+            $column = "(";
+            $values = "VALUES(";
 
             $count = 1;
             $valArr = array();
             foreach($columnArray as $key => $value)
             {
-                $valuesString .= " $".$count." , ";
-                $columnString .= "$key, ";
+                $values .= " $".$count." , ";
+                $column .= "$key, ";
 
                 array_push($valArr,$value);
                 $count++;
             }
-            $columnString = substr($columnString, 0, -2);
-            $valuesString = substr($valuesString, 0, -2);
-            $columnString .= ") \n";
-            $valuesString .= ')';
-            $sql .= $columnString. $valuesString;
+            $column = substr($column, 0, -2);
+            $values = substr($values, 0, -2);
+            $column .= ") \n";
+            $values .= ')';
+            $sql .= $column. $values;
 
             $ret = $this->queryPrepare($sql, 1, $valArr);
             $this->_lastSQL = $sql;
