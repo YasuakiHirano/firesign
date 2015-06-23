@@ -10,14 +10,15 @@ class fireSignMdl
     function fireSignMdl()
     {
         if(DB_USE == "1"){
-
             if(DB_NAME == "Postgresql"){
-
                 $this->db = new PostgreSQL(HOST_NAME, USER_NAME, PASSWORD, DATABASE);
-                $this->db->connect();
-            
+                $ret = $this->db->connect();
+                if(!$ret)
+                {
+                    echo "データベース読み込みエラー"; 
+                    die;
+                }
             } else if(DB_NAME == "MySql"){
-            /*--
                 $this->db = new DBMysql();
                 $ret = $this->db->_includeConnectInfo();
                 $ret = $this->db->_Connect();
@@ -26,7 +27,6 @@ class fireSignMdl
                     echo "データベース読み込みエラー"; 
                     die;
                 }
-             --*/
             }
          }
     }
