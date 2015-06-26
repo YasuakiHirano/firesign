@@ -16,7 +16,8 @@ class topCtl extends fireSignCtl
 
         // view に表示する値を渡す
         $this->viewData= array('hello' => 'Hello, FireSign Page!!', 
-                            'title' => 'FireSign');
+                            'title' => 'FireSign',
+                            'users' => $arr);
 
         // top view表示
         $this->showView('topView');

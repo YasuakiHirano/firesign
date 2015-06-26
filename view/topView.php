@@ -37,8 +37,8 @@
             <li><a href="#makesite">firesignで新規にサイトを作る</a></li>
             <li><a href="#mvc">mvcについて</a></li>
             <li><a href="#controller">コントローラについて</a></li>
-            <li>モデルについて</li>
-            <li>ライブラリについて</li>
+            <li><a href="#model">モデルについて</a></li>
+            <li><a href="#library">ライブラリについて</a></li>
         </ul>
 
         <div class="one_discript">
@@ -66,6 +66,16 @@ class topCtl extends fireSignCtl
 
         // view に表示する値を渡す
         $this-&gt;viewData = array('hello' =&gt; 'Hello, FireSign Page!!');
+        // DB値取得
+        $ret = $topMdl-&gt;getUsers();
+        $arr = pg_fetch_all($ret);
+
+        // view に表示する値を渡す
+        $this-&gt;viewData= array('hello' =&gt; 'Hello, FireSign Page!!', 
+                            'title' =&gt; 'FireSign',
+                            'users' =&gt; $arr);
+
+
 
         // top view表示
         $this-&gt;showView('topView');
@@ -77,25 +87,8 @@ class topCtl extends fireSignCtl
         <div class="file_name">topModel.php</div>
 <pre><code class="php hljs">&lt;?php
 class topMdl extends fireSignMdl
-{
-    function getContents($min,$max)
-    {
-       $sql = "select * from tablename order by create_time desc limit ".$min.",".$max;
-       $ret = $this-&gt;db-&gt;_selectQuery($sql);
-       return $ret;
-    }
-
-    function getTagContents($tag_text,$min,$max)
-    {
-       $sql = "select * from tablename where tag_text like '%".$tag_text."%' order by create_time desc limit ".$min.",".$max;
-       $ret = $this-&gt;db-&gt;_selectQuery($sql);
-       return $ret;
-    }
-
-    function getContnentOne($id)
-    {
-       $sql = "select * from tablename where id = ".$id;
-       $ret = $this-&gt;db-&gt;_selectQuery($sql);
+{    function getUsers(){
+       $ret = $this-&gt;db-&gt;selectQuery("users");
        return $ret;
     }
 }
@@ -160,11 +153,29 @@ coreディレクトリのなかにおいてます。<br />
 $this-&gt;viewDataに配列で追加することによって、viewで使用できます。ここではhelloのキーで渡しているためviewでは$helloで使うことになります。<br />
 $this-&gt;showViewでビューを表示します。その時にviewDataに格納したデータをビューに渡します。
         </div>
-
-
-
         <div id="model"><i class="icon-hand-right"></i>モデルについて</div>
+<pre><code class="php hljs">&lt;?php
+class topMdl extends fireSignMdl
+{
+    function getUsers(){
+       $ret = $this-&gt;db-&gt;selectQuery("users");
+       return $ret;
+    }
+}
+</code></pre>
+モデルのソースが上記になります。modelディレクトリに配置します。<br />
+クラス名のMdlは固定です。configを変更することで、かえることができます。<br />
+controllerと同様にextendsし、主処理をcoreディレクトリにいれてます。<br />
+モデルはDBからデータを取得したりするのに使います。コントローラから呼び出して、データ取得します。<br />
+上記はusersテーブルからすべてのデータを取得する例です。
         <div id="library"><i class="icon-hand-right"></i>ライブラリについて</div>
+ライブラリはlibディレクトリに配置しています。<br />
+下記のようにconfig.phpに記載してインクルードしておきます。<br />
+<pre><code class="php hljs">
+require_once('./utils/pgsql.class.php');
+require_once('./utils/logger.php');
+</code></pre>
+コントローラでクラスをnewして使います。
     </div>
 
     </body>

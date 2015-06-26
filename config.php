@@ -13,7 +13,7 @@ define(DB_NAME, "Postgresql");
 
 define(HOST_NAME, "localhost");
 define(USER_NAME, "yasuaki");
-define(PASSWORD, "*********");
+define(PASSWORD, "**********");
 define(DATABASE, "dbname");
 header('Content-Type: text/html; charset=UTF-8');
 define("SYSTEM_ROOT","/home/yasuaki/www/tools.codelike.info/firesign");
