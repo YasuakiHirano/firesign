@@ -153,6 +153,7 @@ coreディレクトリのなかにおいてます。<br />
 $this-&gt;viewDataに配列で追加することによって、viewで使用できます。ここではhelloのキーで渡しているためviewでは$helloで使うことになります。<br />
 $this-&gt;showViewでビューを表示します。その時にviewDataに格納したデータをビューに渡します。
         </div>
+        <div class="one_discript">
         <div id="model"><i class="icon-hand-right"></i>モデルについて</div>
 <pre><code class="php hljs">&lt;?php
 class topMdl extends fireSignMdl
@@ -168,14 +169,26 @@ class topMdl extends fireSignMdl
 controllerと同様にextendsし、主処理をcoreディレクトリにいれてます。<br />
 モデルはDBからデータを取得したりするのに使います。コントローラから呼び出して、データ取得します。<br />
 上記はusersテーブルからすべてのデータを取得する例です。
+使用時は下記のような感じになります。
+<pre><code class="php hljs">
+    $topMdl = new topMdl();
+
+    // DB値取得
+    $ret = $topMdl-&gt;getUsers();
+    $arr = pg_fetch_all($ret);
+</code></pre>
+topMdlをnewしておいて、メソッド呼び出す。という感じです。
+例ではpostgresから取得しているので、取得した値をpg_fetch_allで配列にしています。
+        </div>
+        <div class="one_discript">
         <div id="library"><i class="icon-hand-right"></i>ライブラリについて</div>
 ライブラリはlibディレクトリに配置しています。<br />
 下記のようにconfig.phpに記載してインクルードしておきます。<br />
-<pre><code class="php hljs">
-require_once('./utils/pgsql.class.php');
+<pre><code class="php hljs">require_once('./utils/pgsql.class.php');
 require_once('./utils/logger.php');
 </code></pre>
 コントローラでクラスをnewして使います。
+    </div>
     </div>
 
     </body>
