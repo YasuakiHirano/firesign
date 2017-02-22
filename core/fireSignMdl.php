@@ -28,6 +28,8 @@ class fireSignMdl
                     die;
                 }
             }
+         } else {
+            echo '<div style="color:red;font-size:20px;">DBオブジェクト作成エラー：DBに接続できません。<br />modelを使わないでください。</div>';
          }
     }
 }
