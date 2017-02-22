@@ -7,7 +7,7 @@ class fireSignMdl
 {
     public $db;
 
-    function fireSignMdl()
+    function __construct()
     {
         if(DB_USE == "1"){
             if(DB_NAME == "Postgresql"){

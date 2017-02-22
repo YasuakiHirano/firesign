@@ -8,7 +8,6 @@ abstract class requestVal
 {
     protected $_values;
 
-    // コンストラクタ
     public function __construct() 
     {
         $this->setValues();

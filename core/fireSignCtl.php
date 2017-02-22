@@ -11,8 +11,7 @@ class fireSignCtl
     public $debug;
     public $viewData;
 
-    //コンストラクタ
-    function fireSignCoreCtl()
+    function __construct()
     {
         //$this->debug = new Debug();
         $this->request = new fireSignRequest();
