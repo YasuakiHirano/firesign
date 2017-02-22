@@ -1,6 +1,5 @@
 <?php
     session_start();
-    error_reporting(2);
     require_once './config.php';
     require_once './dispatcher.php';
 
